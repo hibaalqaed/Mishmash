@@ -1,21 +1,23 @@
 const styles = {
     text: {textAlign: "center" },
   
-    restImage: {
+    restaurantImage: {
       display: "block",
       marginLeft: "auto",
       marginRight: "auto",
       width: "25%",
       },
   
-    itemImage: {width: "200px", height: "200px"},
+    productImage: {
+        width: "200px", height: "200px",
+        objectFit: "cover",},
   
     list: {
       alignItems: "center",
       justifyContent: "center",
       display: "flex",},
   
-    item: {
+    product: {
       marging: "20px"
     }
   };
