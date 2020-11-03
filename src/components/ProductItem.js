@@ -1,14 +1,15 @@
-import styles from '../styles'
+import { ProductWrapper } from '../styles'
+
+
 const ProductItem = (props) => {
     return (
-        <div style={styles.product} key={props.productObject.id}>
+        <ProductWrapper>
           <img
-            style={styles.productImage}
             src= {props.productObject.image}
             alt={props.productObject.name}/>
-          <p style={styles.text}>{props.productObject.name}</p>
-          <p style={styles.text}>{props.productObject.price}</p>
-        </div>
+          <p>{props.productObject.name}</p>
+          <p>{props.productObject.price}</p>
+        </ProductWrapper>
     )
 }
 

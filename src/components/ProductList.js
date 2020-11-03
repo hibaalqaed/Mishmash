@@ -1,6 +1,6 @@
 import ProductItem from './ProductItem'
 import products from '../products'
-import styles from '../styles'
+import { ListWrapper } from '../styles'
 
 
 //has to be in capital letter
@@ -10,11 +10,10 @@ const ProductList = () => {
       ))
 
     return (
-    <div style={styles.list}>   
+    <ListWrapper>   
         {ProductList}
-    </div>
+    </ListWrapper>
     )   
     }
-
 
 export default ProductList;

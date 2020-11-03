@@ -19,6 +19,6 @@ const products = [
       price: "KWD " + 1.000,
       image: "https://dml32v1x15q41.cloudfront.net/v1/image/static/976573b5-a1ca-48c3-816c-2ca86b711dc6/934x615",
     },
-]
+];
 
 export default products;
