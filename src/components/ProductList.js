@@ -3,15 +3,15 @@ import products from '../products'
 import { ListWrapper } from '../styles'
 
 
-//has to be in capital letter
+//has to be in capital letter cuz component
 const ProductList = () => {
-    const ProductList = products.map(product => (
+    const productArray = products.map(product => (
         <ProductItem productObject={product} />
       ))
 
     return (
     <ListWrapper>   
-        {ProductList}
+        {productArray}
     </ListWrapper>
     )   
     }

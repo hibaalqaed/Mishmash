@@ -7,6 +7,14 @@ const GlobalStyle = createGlobalStyle`
   }
   `;
 
+const ThemeButton = styled.button`
+  font-size: 1em;
+  margin: 1.25em;
+  border-radius: 3px;
+  background-color: ${props => props.theme.mainColor};
+  color: ${props => props.theme.backgroundColor};
+`;
+
 const Title = styled.h1`
   text-align: center;
   color: purple;
@@ -14,6 +22,7 @@ const Title = styled.h1`
 
 const Slogan = styled.h4`
   text-align: center;
+  color: orangered;
 `;
 
 const RestaurantImage = styled.img`
@@ -34,7 +43,8 @@ const ProductWrapper = styled.div`
     margin: 20px;
 
     img{
-     width: 200px;
+     /* width: 200px; */
+     height: 200px;
      object-fit: cover;
      margin-left: auto;
      margin-right: auto;
@@ -43,15 +53,16 @@ const ProductWrapper = styled.div`
 
     p{
      text-align: center;
-
-     &.product-price {
-       color: ${props => props.theme.orange};
      }
+
+     .product-price {
+       color: ${props => props.theme.orange};
     }
 `;
 
   export {
       GlobalStyle,
+      ThemeButton,
       Title,
       Slogan,
       RestaurantImage,

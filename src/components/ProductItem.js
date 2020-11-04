@@ -8,7 +8,7 @@ const ProductItem = (props) => {
             src= {props.productObject.image}
             alt={props.productObject.name}/>
           <p>{props.productObject.name}</p>
-          <p>{props.productObject.price}</p>
+          <p className="product-price">{props.productObject.price}</p>
         </ProductWrapper>
     )
 }
