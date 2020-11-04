@@ -1,13 +1,20 @@
 import styled, { createGlobalStyle } from "styled-components";
 
-const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`
   body{
     color: ${props => props.theme.mainColor};
     background-color: ${props => props.theme.backgroundColor};
   }
   `;
 
-const ThemeButton = styled.button`
+export const SearchBarStyled = styled.input`
+  padding: 0.5rem;
+  margin: 1rem auto;
+  display: block;
+  width: 40%;
+  `;
+
+export const ThemeButton = styled.button`
   font-size: 1em;
   margin: 1.25em;
   border-radius: 3px;
@@ -15,31 +22,31 @@ const ThemeButton = styled.button`
   color: ${props => props.theme.backgroundColor};
 `;
 
-const Title = styled.h1`
+export const Title = styled.h1`
   text-align: center;
   color: purple;
 `;
 
-const Slogan = styled.h4`
+export const Slogan = styled.h4`
   text-align: center;
   color: orangered;
 `;
 
-const RestaurantImage = styled.img`
+export const RestaurantImage = styled.img`
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 25%;
 `;
 
-const ListWrapper = styled.div`
+export const ListWrapper = styled.div`
     align-items: center;
     justify-content: center;
     display: flex;
     flex-wrap: wrap;
 `;
 
-const ProductWrapper = styled.div`
+export const ProductWrapper = styled.div`
     margin: 20px;
 
     img{
@@ -59,13 +66,3 @@ const ProductWrapper = styled.div`
        color: ${props => props.theme.orange};
     }
 `;
-
-  export {
-      GlobalStyle,
-      ThemeButton,
-      Title,
-      Slogan,
-      RestaurantImage,
-      ListWrapper,
-      ProductWrapper,
-  };

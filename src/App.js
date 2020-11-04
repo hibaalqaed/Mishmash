@@ -27,7 +27,7 @@ function App() {
 
   //Ternary Operator: an if statement in one line
   //Syntax: CONDITION ? TRUE : FALSE
-  
+
   return (
   <ThemeProvider theme={theme[currentTheme]}>
     <GlobalStyle />

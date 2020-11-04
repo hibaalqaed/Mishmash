@@ -1,6 +1,5 @@
 import { ProductWrapper } from '../styles'
 
-
 const ProductItem = (props) => {
     return (
         <ProductWrapper>
