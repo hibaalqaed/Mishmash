@@ -1,4 +1,3 @@
-import products from '../products'
 import { useState } from "react";
 
 //Styles
@@ -12,9 +11,9 @@ import SearchBar from './SearchBar'
 const ProductList = (props) => {
     const [query, setQuery] = useState("");
 
-    const filteredProducts = products.filter(product => product.name.toLowerCase().includes(query.toLowerCase()));
+    const filteredProducts = props.products.filter(product => product.name.toLowerCase().includes(query.toLowerCase()));
     const productArray = filteredProducts.map(product => (
-        <ProductItem productObject={product} setProduct={props.setProduct} key={product.id} />
+        <ProductItem product={product} setProduct={props.setProduct} deleteProduct={props.deleteProduct} key={product.id} />
       ))
 
     return (

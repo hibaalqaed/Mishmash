@@ -1,14 +1,19 @@
 import { ProductWrapper } from '../styles'
+import DeleteButton from "./buttons/DeleteButton"
 
 const ProductItem = (props) => {
+  const product = props.product;
+  
+
     return (
         <ProductWrapper>
           <img
-          onClick={() => props.setProduct(props.productObject)}
-            src= {props.productObject.image}
-            alt={props.productObject.name}/>
-          <p>{props.productObject.name}</p>
-          <p className="product-price">{props.productObject.price}</p>
+          onClick={() => props.setProduct(product)}
+            src= {product.image}
+            alt={product.name}/>
+          <p>{product.name}</p>
+          <p className="product-price">{product.price}</p>
+        <DeleteButton productId={product.id} deleteProduct={props.deleteProduct}/>
         </ProductWrapper>
     )
 }

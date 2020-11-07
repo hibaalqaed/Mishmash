@@ -1,7 +1,9 @@
 import { useState } from "react";
+import products from "./products"
+
+// Styles
 import { GlobalStyle, ThemeButton, Title, Slogan, RestaurantImage } from "./styles";
 import { ThemeProvider } from "styled-components";
-import products from "./products";
 
 // Components
 import ProductList from "./components/ProductList";
@@ -13,17 +15,26 @@ const theme = {
     mainColor: "#242424",
     backgroundColor: "white",
     orange: "orangered",
+    red: "#ff3232",
   },
   dark: {
     mainColor: "white",
     backgroundColor: "#242424",
     orange: "orangered",
+    red: "#ff3232",
   }
 };
 
 function App() {
   const [currentTheme, setCurrentTheme] = useState ("light");
   const [product, setProduct] = useState(null);
+  const [_products, setProducts] = useState(products);
+  
+  const deleteProduct = (productId) => {
+        const updatedProducts = _products.filter(product => product.id !== productId);
+        setProducts(updatedProducts);
+    }
+
   const toggleCurrentTheme = () => setCurrentTheme
   (currentTheme === "light" ? "dark" : "light");
 
@@ -31,8 +42,8 @@ function App() {
   //Syntax: CONDITION ? TRUE : FALSE
 
   const setView = () => {
-    if (product) return <ProductDetail product={product}/>
-    else return <ProductList setProduct={setProduct}/>
+    if (product) return <ProductDetail deleteProduct={deleteProduct} product={product} setProduct={setProduct}/>
+    else return <ProductList products={_products} deleteProduct={deleteProduct} setProduct={setProduct}/>
   }
 
   return (
