@@ -1,17 +1,10 @@
-import React from 'react'
-import { DeleteButtonStyled } from "../../styles"
+import React from "react";
+import { DeleteButtonStyled } from "../../styles";
 
-const DeleteButton = (props) => {
-    const productId = props.productId;
-    const handleDelete = () => {
-        props.deleteProduct(productId);
-        }
+const DeleteButton = ({ productId, deleteProduct }) => {
+  const handleDelete = () => deleteProduct(productId);
 
-    return (
-        <DeleteButtonStyled onClick={handleDelete}>
-            Delete
-        </DeleteButtonStyled>
-    )
-}
+  return <DeleteButtonStyled onClick={handleDelete}>Delete</DeleteButtonStyled>;
+};
 
-export default DeleteButton
+export default DeleteButton;
