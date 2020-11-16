@@ -8,6 +8,16 @@ export const GlobalStyle = createGlobalStyle`
   }
   `;
 
+export const CreateButtonStyled = styled.button`
+  color: ${(props) => props.theme.backgroundColor};
+  background-color: ${(props) => props.theme.mainColor};
+
+  &:hover {
+    color: ${(props) => props.theme.mainColor};
+    background-color: ${(props) => props.theme.backgroundColor};
+  }
+`;
+
 export const Logo = styled(Link)`
   padding: 0.75em;
   img {
@@ -80,8 +90,8 @@ export const RestaurantImage = styled.img`
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 500px;
-  height: 200px;
+  width: 1000px;
+  height: 500px;
 `;
 
 export const ListWrapper = styled.div`

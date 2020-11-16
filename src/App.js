@@ -30,6 +30,10 @@ function App() {
   const [currentTheme, setCurrentTheme] = useState("light");
   const [_products, setProducts] = useState(products);
 
+  const createProduct = (newProduct) => {
+    setProducts([..._products, newProduct]);
+  };
+
   const deleteProduct = (productId) => {
     const updatedProducts = _products.filter(
       (product) => product.id !== productId
@@ -53,7 +57,11 @@ function App() {
           <ProductDetail products={_products} deleteProduct={deleteProduct} />
         </Route>
         <Route path="/products">
-          <ProductList products={_products} deleteProduct={deleteProduct} />
+          <ProductList
+            createProduct={createProduct}
+            products={_products}
+            deleteProduct={deleteProduct}
+          />
         </Route>
         <Route path="/">
           <Home />

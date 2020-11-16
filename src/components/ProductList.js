@@ -1,3 +1,4 @@
+//React
 import { useState } from "react";
 
 //Styles
@@ -6,9 +7,14 @@ import { ListWrapper } from "../styles";
 //Components
 import ProductItem from "./ProductItem";
 import SearchBar from "./SearchBar";
+import AddButton from "./buttons/AddButton";
 
-//has to be in capital letter cuz component
-const ProductList = ({ products, setProduct, deleteProduct }) => {
+const ProductList = ({
+  products,
+  setProduct,
+  deleteProduct,
+  createProduct,
+}) => {
   const [query, setQuery] = useState("");
 
   const filteredProducts = products.filter((product) =>
@@ -27,6 +33,7 @@ const ProductList = ({ products, setProduct, deleteProduct }) => {
     //fragment
     <>
       <SearchBar setQuery={setQuery} />
+      <AddButton createProduct={createProduct} />
       <ListWrapper>{productArray}</ListWrapper>
     </>
   );
