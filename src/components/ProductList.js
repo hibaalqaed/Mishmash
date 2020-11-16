@@ -1,42 +1,36 @@
 //React
 import { useState } from "react";
+import { observer } from "mobx-react";
 
-//Styles
-import { ListWrapper } from "../styles";
+//Stores
+import productStore from "../stores/productStore";
 
 //Components
 import ProductItem from "./ProductItem";
 import SearchBar from "./SearchBar";
 import AddButton from "./buttons/AddButton";
 
-const ProductList = ({
-  products,
-  setProduct,
-  deleteProduct,
-  createProduct,
-}) => {
+//Styles
+import { ListWrapper } from "../styles";
+
+const ProductList = () => {
   const [query, setQuery] = useState("");
 
-  const filteredProducts = products.filter((product) =>
+  const filteredProducts = productStore.products.filter((product) =>
     product.name.toLowerCase().includes(query.toLowerCase())
   );
   const productArray = filteredProducts.map((product) => (
-    <ProductItem
-      product={product}
-      setProduct={setProduct}
-      deleteProduct={deleteProduct}
-      key={product.id}
-    />
+    <ProductItem product={product} key={product.id} />
   ));
 
   return (
     //fragment
     <>
       <SearchBar setQuery={setQuery} />
-      <AddButton createProduct={createProduct} />
+      <AddButton />
       <ListWrapper>{productArray}</ListWrapper>
     </>
   );
 };
 
-export default ProductList;
+export default observer(ProductList);

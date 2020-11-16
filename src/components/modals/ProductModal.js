@@ -3,7 +3,9 @@ import Modal from "react-modal";
 
 import { CreateButtonStyled } from "../../styles.js";
 
-const ProductModal = ({ isOpen, closeModal, createProduct }) => {
+import productStore from "../../stores/productStore";
+
+const ProductModal = ({ isOpen, closeModal }) => {
   const [product, setProduct] = useState({
     name: "",
     price: 0,
@@ -17,7 +19,7 @@ const ProductModal = ({ isOpen, closeModal, createProduct }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    createProduct(product);
+    productStore.createProduct(product);
     closeModal();
   };
 
@@ -35,6 +37,7 @@ const ProductModal = ({ isOpen, closeModal, createProduct }) => {
               name="name"
               onChange={handleChange}
               type="text"
+              required
               className="form-control"
             />
           </div>
@@ -46,6 +49,7 @@ const ProductModal = ({ isOpen, closeModal, createProduct }) => {
               onChange={handleChange}
               type="number"
               min="1"
+              required
               className="form-control"
             />
           </div>
@@ -56,6 +60,7 @@ const ProductModal = ({ isOpen, closeModal, createProduct }) => {
               name="description"
               onChange={handleChange}
               type="text"
+              required
               className="form-control"
             />
           </div>
@@ -66,6 +71,7 @@ const ProductModal = ({ isOpen, closeModal, createProduct }) => {
               name="image"
               onChange={handleChange}
               type="text"
+              required
               className="form-control"
             />
           </div>
