@@ -8,6 +8,11 @@ export const GlobalStyle = createGlobalStyle`
   }
   `;
 
+export const UpdateButtonStyled = styled.p`
+  color: ${(props) => props.theme.red};
+  cursor: pointer;
+`;
+
 export const CreateButtonStyled = styled.button`
   color: ${(props) => props.theme.backgroundColor};
   background-color: ${(props) => props.theme.mainColor};
@@ -35,6 +40,7 @@ export const NavProduct = styled(NavLink)`
 
 export const DeleteButtonStyled = styled.p`
   color: ${(props) => props.theme.red};
+  cursor: pointer;
 `;
 
 export const GoBackButton = styled.button`
@@ -67,6 +73,8 @@ export const SearchBarStyled = styled.input`
   margin: 1rem auto;
   display: block;
   width: 40%;
+  background-color: ${(props) => props.theme.backgroundColor};
+  color: ${(props) => props.theme.mainColor};
 `;
 
 export const ThemeButton = styled.button`

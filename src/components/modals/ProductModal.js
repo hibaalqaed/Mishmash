@@ -5,13 +5,33 @@ import { CreateButtonStyled } from "../../styles.js";
 
 import productStore from "../../stores/productStore";
 
-const ProductModal = ({ isOpen, closeModal }) => {
-  const [product, setProduct] = useState({
-    name: "",
-    price: 0,
-    description: "",
-    image: "",
-  });
+/** 
+ * Null Coalescing Operator
+ * 
+ * oldProduct ? oldProduct : { 
+      name: "",
+      price: 0,
+      description: "",
+      image: "",
+    }
+ * ...same as...
+ * 
+ * oldProduct ?? { 
+      name: "",
+      price: 0,
+      description: "",
+      image: "",
+    }
+ */
+
+const ProductModal = ({ isOpen, closeModal, oldProduct }) => {
+  const [product, setProduct] = useState(
+    oldProduct ?? {
+      name: "",
+      price: 0,
+      description: "",
+    }
+  );
 
   const handleChange = (event) => {
     setProduct({ ...product, [event.target.name]: event.target.value });
@@ -19,7 +39,9 @@ const ProductModal = ({ isOpen, closeModal }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    productStore.createProduct(product);
+    // if (oldProduct) productStore.updateProduct(product);
+    // else productStore.createProduct(product);
+    productStore[oldProduct ? "updateProduct" : "createProduct"](product);
     closeModal();
   };
 
@@ -34,6 +56,7 @@ const ProductModal = ({ isOpen, closeModal }) => {
           <div className="col-6">
             <label>Name</label>
             <input
+              value={product.name}
               name="name"
               onChange={handleChange}
               type="text"
@@ -45,6 +68,7 @@ const ProductModal = ({ isOpen, closeModal }) => {
           <div className="col-6">
             <label>Price</label>
             <input
+              value={product.price}
               name="price"
               onChange={handleChange}
               type="number"
@@ -57,6 +81,7 @@ const ProductModal = ({ isOpen, closeModal }) => {
           <div className="col-6">
             <label>Description</label>
             <input
+              value={product.description}
               name="description"
               onChange={handleChange}
               type="text"
@@ -68,6 +93,7 @@ const ProductModal = ({ isOpen, closeModal }) => {
           <div className="col-6">
             <label>Image</label>
             <input
+              value={product.image}
               name="image"
               onChange={handleChange}
               type="text"
@@ -76,7 +102,9 @@ const ProductModal = ({ isOpen, closeModal }) => {
             />
           </div>
         </div>
-        <CreateButtonStyled type="submit">Create</CreateButtonStyled>
+        <CreateButtonStyled type="submit">
+          {oldProduct ? "Update" : "Create"}
+        </CreateButtonStyled>
       </form>
     </Modal>
   );
