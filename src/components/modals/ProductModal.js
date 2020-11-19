@@ -30,6 +30,7 @@ const ProductModal = ({ isOpen, closeModal, oldProduct }) => {
       name: "",
       price: 0,
       description: "",
+      image: "",
     }
   );
 

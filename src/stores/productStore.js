@@ -1,18 +1,24 @@
 import { makeObservable, observable, action } from "mobx";
 import slugify from "react-slugify";
-import products from "../products";
+import axios from "axios";
 
 class ProductStore {
-  products = products;
+  products = [];
 
   constructor() {
     makeObservable(this, {
       products: observable,
-      createProduct: action,
-      updateProduct: action,
-      deleteProduct: action,
     });
   }
+
+  fetchProducts = async () => {
+    try {
+      const res = await axios.get("http://localhost:8000/products");
+      this.products = res.data;
+    } catch (error) {
+      console.error("ProductsStore -> fetchProducts -> error", error);
+    }
+  };
 
   createProduct = (newProduct) => {
     newProduct.id = this.products[this.products.length - 1].id + 1;
@@ -40,4 +46,6 @@ class ProductStore {
 }
 
 const productStore = new ProductStore();
+productStore.fetchProducts();
+
 export default productStore;
