@@ -1,7 +1,6 @@
 import { makeObservable, observable, action } from "mobx";
 import slugify from "react-slugify";
 import axios from "axios";
-import { arrayExtensions } from "mobx/dist/internal";
 
 class ProductStore {
   products = [];
