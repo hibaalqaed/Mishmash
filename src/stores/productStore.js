@@ -1,6 +1,7 @@
 import { makeObservable, observable, action } from "mobx";
 import slugify from "react-slugify";
 import axios from "axios";
+import { arrayExtensions } from "mobx/dist/internal";
 
 class ProductStore {
   products = [];
@@ -38,10 +39,15 @@ class ProductStore {
     product.slug = slugify(product.name);
   };
 
-  deleteProduct = (productSlug) => {
-    this.products = this.products.filter(
-      (product) => product.slug !== productSlug
-    );
+  deleteProduct = async (productSlug) => {
+    try {
+      await axios.delete(`http://localhost:8000/products/${productSlug}`);
+      this.products = this.products.filter(
+        (product) => product.slug !== productSlug
+      );
+    } catch (error) {
+      console.log("ProductStore -> deleteProduct -> error", error);
+    }
   };
 }
 
