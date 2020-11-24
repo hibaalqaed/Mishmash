@@ -1,4 +1,4 @@
-import { makeObservable, observable, action } from "mobx";
+import { makeObservable, observable } from "mobx";
 import slugify from "react-slugify";
 import axios from "axios";
 
@@ -32,23 +32,27 @@ class ProductStore {
     }
   };
 
-  updateProduct = (updatedProduct) => {
-    const product = this.products.find(
-      (product) => product.id === updatedProduct.id
-    );
-    for (const key in product) product[key] = updatedProduct[key];
-    // product.name = updatedProduct.name;
-    // product.price = updatedProduct.price;
-    // product.descriptipn = updatedProduct.descriptipn;
-    // product.image = updatedProduct.image;
-    product.slug = slugify(product.name);
+  updateProduct = async (updatedProduct) => {
+    try {
+      await axios.put(
+        `http://localhost:8000/products/${updatedProduct.id}`,
+        updatedProduct
+      );
+      const product = this.products.find(
+        (product) => product.id === updatedProduct.id
+      );
+      for (const key in product) product[key] = updatedProduct[key];
+      product.slug = slugify(product.name);
+    } catch (error) {
+      console.error("ProductStore -> updateProduct -> error", error);
+    }
   };
 
-  deleteProduct = async (productSlug) => {
+  deleteProduct = async (productId) => {
     try {
-      await axios.delete(`http://localhost:8000/products/${productSlug}`);
+      await axios.delete(`http://localhost:8000/products/${productId}`);
       this.products = this.products.filter(
-        (product) => product.slug !== productSlug
+        (product) => product.id !== +productId
       );
     } catch (error) {
       console.log("ProductStore -> deleteProduct -> error", error);

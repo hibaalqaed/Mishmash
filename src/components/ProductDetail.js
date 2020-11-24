@@ -12,9 +12,9 @@ import DeleteButton from "./buttons/DeleteButton";
 import { DetailWrapper } from "../styles";
 
 const ProductDetail = () => {
-  const { productSlug } = useParams(); // const productId = useParams().productId;
+  const { productId } = useParams(); // const productId = useParams().productId;
   const product = productStore.products.find(
-    (product) => product.slug === productSlug
+    (product) => product.id === +productId
   );
 
   if (!product) return <Redirect to="/products" />;
@@ -26,7 +26,7 @@ const ProductDetail = () => {
         <img src={product.image} alt={product.name} />
         <p>{product.description}</p>
         <p>{product.price}</p>
-        <DeleteButton productSlug={product.slug} />
+        <DeleteButton productId={product.id} />
       </DetailWrapper>
     </>
   );

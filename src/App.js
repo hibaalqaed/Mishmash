@@ -40,7 +40,7 @@ function App() {
       />
 
       <Switch>
-        <Route path="/products/:productSlug">
+        <Route path="/products/:productId">
           <ProductDetail />
         </Route>
         <Route path="/products">
