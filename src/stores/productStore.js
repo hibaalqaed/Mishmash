@@ -22,10 +22,11 @@ class ProductStore {
 
   createProduct = async (newProduct) => {
     try {
-      const res = await axios.post(
-        "http://localhost:8000/products",
-        newProduct
-      );
+      const formData = new FormData();
+      //.append to access any field cuz FormData is not a regular object
+      for (const key in newProduct) formData.append(key, newProduct[key]);
+
+      const res = await axios.post("http://localhost:8000/products", formData);
       this.products.push(res.data);
     } catch (error) {
       console.error("ProductStore -> createProduct -> error", error);
@@ -34,14 +35,20 @@ class ProductStore {
 
   updateProduct = async (updatedProduct) => {
     try {
+      const formData = new FormData();
+      for (const key in updatedProduct)
+        formData.append(key, updatedProduct[key]);
+
       await axios.put(
         `http://localhost:8000/products/${updatedProduct.id}`,
-        updatedProduct
+        formData
       );
       const product = this.products.find(
         (product) => product.id === updatedProduct.id
       );
       for (const key in product) product[key] = updatedProduct[key];
+      product.image = URL.createObjectURL(updatedProduct.image);
+
       product.slug = slugify(product.name);
     } catch (error) {
       console.error("ProductStore -> updateProduct -> error", error);

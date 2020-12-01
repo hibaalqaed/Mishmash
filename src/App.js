@@ -40,8 +40,14 @@ function App() {
       />
 
       <Switch>
+        <Route path="/branches/:branchSlug">
+          <BranchDetail />
+        </Route>
         <Route path="/products/:productId">
           <ProductDetail />
+        </Route>
+        <Route path="/branches">
+          <BranchList />
         </Route>
         <Route path="/products">
           <ProductList />

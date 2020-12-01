@@ -15,7 +15,7 @@ import { ListWrapper } from "../styles";
 
 const ProductList = () => {
   const [query, setQuery] = useState("");
-  console.log(productStore.products);
+
   const filteredProducts = productStore.products.filter((product) =>
     product.name.toLowerCase().includes(query.toLowerCase())
   );

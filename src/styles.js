@@ -129,3 +129,7 @@ export const ProductWrapper = styled.div`
     color: ${(props) => props.theme.orange};
   }
 `;
+
+export const BranchItemImage = styled.img`
+  width: 20em;
+`;

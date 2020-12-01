@@ -46,6 +46,11 @@ const ProductModal = ({ isOpen, closeModal, oldProduct }) => {
     closeModal();
   };
 
+  // deconstruct products > ...product
+  const handleImage = (event) => {
+    setProduct({ ...product, image: event.target.files[0] });
+  };
+
   return (
     <Modal
       isOpen={isOpen}
@@ -94,10 +99,9 @@ const ProductModal = ({ isOpen, closeModal, oldProduct }) => {
           <div className="col-6">
             <label>Image</label>
             <input
-              value={product.image}
               name="image"
-              onChange={handleChange}
-              type="text"
+              onChange={handleImage}
+              type="file"
               required
               className="form-control"
             />
