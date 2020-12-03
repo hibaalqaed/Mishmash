@@ -1,4 +1,4 @@
-//React
+// React
 import { useState } from "react";
 // Mobx
 import { observer } from "mobx-react";
@@ -6,6 +6,9 @@ import { observer } from "mobx-react";
 import { Title } from "../styles";
 // Store
 import branchStore from "../stores/branchStore";
+// Components
+import BranchItem from "../components/BranchItem";
+import SearchBar from "./SearchBar";
 
 const BranchList = () => {
   const [query, setQuery] = useState("");
@@ -16,7 +19,9 @@ const BranchList = () => {
 
   return (
     <div className="container">
+      <SearchBar setQuery={setQuery} />
       <Title>Bakeries</Title>
+      {branchlist}
     </div>
   );
 };

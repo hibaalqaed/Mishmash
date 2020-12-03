@@ -24,7 +24,7 @@ import productStore from "../../stores/productStore";
     }
  */
 
-const ProductModal = ({ isOpen, closeModal, oldProduct }) => {
+const ProductModal = ({ isOpen, closeModal, oldProduct, branch }) => {
   const [product, setProduct] = useState(
     oldProduct ?? {
       name: "",
@@ -40,9 +40,9 @@ const ProductModal = ({ isOpen, closeModal, oldProduct }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // if (oldProduct) productStore.updateProduct(product);
-    // else productStore.createProduct(product);
-    productStore[oldProduct ? "updateProduct" : "createProduct"](product);
+    if (oldProduct) productStore.updateProduct(product);
+    else productStore.createProduct(product, branch);
+    // productStore[oldProduct ? "updateProduct" : "createProduct"](product);
     closeModal();
   };
 

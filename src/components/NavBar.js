@@ -6,7 +6,7 @@ const NavBar = ({ toggleCurrentTheme, currentTheme }) => {
   return (
     <nav className="navbar navbar-expand-lg">
       <Logo to="/" className="navbar-brand">
-        <img src={logo} width="150" />
+        <img src={logo} alt="" width="150" />
       </Logo>
 
       <div className="collapse navbar-collapse" id="navbarSupportedContent">

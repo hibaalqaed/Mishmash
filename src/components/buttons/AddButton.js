@@ -5,7 +5,7 @@ import { BsFillPlusCircleFill } from "react-icons/bs";
 //Components
 import ProductModal from "../modals/ProductModal";
 
-const AddButton = () => {
+const AddButton = ({ branch }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const closeModal = () => setIsOpen(false);
@@ -18,7 +18,7 @@ const AddButton = () => {
         size="2em"
         onClick={openModal}
       />
-      <ProductModal isOpen={isOpen} closeModal={closeModal} />
+      <ProductModal isOpen={isOpen} closeModal={closeModal} branch={branch} />
     </>
   );
 };

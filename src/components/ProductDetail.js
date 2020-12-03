@@ -1,14 +1,14 @@
-//React
+// React
 import { observer } from "mobx-react";
 import { Redirect, useParams } from "react-router-dom";
 
-//Class
+// Stores
 import productStore from "../stores/productStore";
 
-//Components
+// Components
 import DeleteButton from "./buttons/DeleteButton";
 
-//Styles
+// Styling
 import { DetailWrapper } from "../styles";
 
 const ProductDetail = () => {

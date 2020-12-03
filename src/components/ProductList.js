@@ -1,22 +1,18 @@
-//React
+// React
 import { useState } from "react";
 import { observer } from "mobx-react";
 
-//Stores
-import productStore from "../stores/productStore";
-
-//Components
+// Components
 import ProductItem from "./ProductItem";
 import SearchBar from "./SearchBar";
-import AddButton from "./buttons/AddButton";
 
-//Styles
+// Styling
 import { ListWrapper } from "../styles";
 
-const ProductList = () => {
+const ProductList = ({ products }) => {
   const [query, setQuery] = useState("");
 
-  const filteredProducts = productStore.products.filter((product) =>
+  const filteredProducts = products.filter((product) =>
     product.name.toLowerCase().includes(query.toLowerCase())
   );
   const productArray = filteredProducts.map((product) => (
@@ -26,7 +22,6 @@ const ProductList = () => {
   return (
     <>
       <SearchBar setQuery={setQuery} />
-      <AddButton />
       <ListWrapper>{productArray}</ListWrapper>
     </>
   );

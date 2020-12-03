@@ -1,15 +1,16 @@
+// React
 import { useState } from "react";
-import { Route, Switch } from "react-router";
+import { observer } from "mobx-react";
 
-// Styles
+// Styling
 import { GlobalStyle } from "./styles";
 import { ThemeProvider } from "styled-components";
 
 // Components
-import Home from "./components/Home";
-import ProductList from "./components/ProductList";
-import ProductDetail from "./components/ProductDetail";
 import NavBar from "./components/NavBar";
+import Routes from "./components/Routes";
+import productStore from "./stores/productStore";
+import branchStore from "./stores/branchStore";
 
 const theme = {
   light: {
@@ -38,26 +39,13 @@ function App() {
         currentTheme={currentTheme}
         toggleCurrentTheme={toggleCurrentTheme}
       />
-
-      <Switch>
-        <Route path="/branches/:branchSlug">
-          <BranchDetail />
-        </Route>
-        <Route path="/products/:productId">
-          <ProductDetail />
-        </Route>
-        <Route path="/branches">
-          <BranchList />
-        </Route>
-        <Route path="/products">
-          <ProductList />
-        </Route>
-        <Route path="/">
-          <Home />
-        </Route>
-      </Switch>
+      {productStore.loading || branchStore.loading ? (
+        <h1>Loading...</h1>
+      ) : (
+        <Routes />
+      )}
     </ThemeProvider>
   );
 }
 
-export default App;
+export default observer(App);
