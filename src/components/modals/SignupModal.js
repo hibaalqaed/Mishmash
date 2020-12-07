@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Modal from "react-modal";
-import { CreateButtonStyled } from "../styles";
+import { CreateButtonStyled } from "../../styles";
+import authStore from "../../stores/authStore";
 
 const customStyles = {
   content: {

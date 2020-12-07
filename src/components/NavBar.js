@@ -1,6 +1,6 @@
 import logo from "../images/mishmash-logo.jpg";
-
 import { Logo, NavProduct, ThemeButton } from "../styles";
+import SignupButton from "./buttons/SignupButton";
 
 const NavBar = ({ toggleCurrentTheme, currentTheme }) => {
   return (
