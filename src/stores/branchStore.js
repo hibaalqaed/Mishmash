@@ -1,5 +1,5 @@
 import { makeAutoObservable } from "mobx";
-import axios from "axios";
+import instance from "./instance";
 
 class BranchStore {
   branches = [];
@@ -11,7 +11,7 @@ class BranchStore {
 
   fetchBranches = async () => {
     try {
-      const res = await axios.get("http://localhost:8000/branches");
+      const res = await instance.get("/branches");
       this.branches = res.data;
       this.loading = false;
     } catch (error) {
@@ -25,7 +25,7 @@ class BranchStore {
       //.append to access any field cuz FormData is not a regular object
       for (const key in newBranch) formData.append(key, newBranch[key]);
 
-      const res = await axios.post("http://localhost:8000/branches", formData);
+      const res = await instance.post("/branches", formData);
       this.branches.push(res.data);
     } catch (error) {
       console.error("BranchStore -> createBranch -> error", error);

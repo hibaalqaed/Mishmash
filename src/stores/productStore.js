@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx";
 import slugify from "react-slugify";
-import axios from "axios";
+import instance from "./instance";
 
 class ProductStore {
   products = [];
@@ -15,7 +15,7 @@ class ProductStore {
 
   fetchProducts = async () => {
     try {
-      const res = await axios.get("http://localhost:8000/products");
+      const res = await instance.get("/products");
       this.loading = false;
       this.products = res.data;
     } catch (error) {
@@ -29,8 +29,8 @@ class ProductStore {
       //.append to access any field cuz FormData is not a regular object
       for (const key in newProduct) formData.append(key, newProduct[key]);
 
-      const res = await axios.post(
-        `http://localhost:8000/branches/${branch.id}/products`,
+      const res = await instance.post(
+        `/branches/${branch.id}/products`,
         formData
       );
       this.products.push(res.data);
@@ -46,10 +46,7 @@ class ProductStore {
       for (const key in updatedProduct)
         formData.append(key, updatedProduct[key]);
 
-      await axios.put(
-        `http://localhost:8000/products/${updatedProduct.id}`,
-        formData
-      );
+      await instance.put(`/products/${updatedProduct.id}`, formData);
       const product = this.products.find(
         (product) => product.id === updatedProduct.id
       );
@@ -64,7 +61,7 @@ class ProductStore {
 
   deleteProduct = async (productId) => {
     try {
-      await axios.delete(`http://localhost:8000/products/${productId}`);
+      await instance.delete(`/products/${productId}`);
       this.products = this.products.filter(
         (product) => product.id !== +productId
       );

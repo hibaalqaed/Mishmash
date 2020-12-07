@@ -20,6 +20,7 @@ const NavBar = ({ toggleCurrentTheme, currentTheme }) => {
             </NavProduct>
           </li>
           <li className="nav-item">
+            <SignupButton />
             <ThemeButton onClick={toggleCurrentTheme}>
               {currentTheme === "light" ? "Dark" : "Light"} Mode
             </ThemeButton>
