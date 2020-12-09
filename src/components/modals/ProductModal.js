@@ -78,7 +78,8 @@ const ProductModal = ({ isOpen, closeModal, oldProduct, branch }) => {
               name="price"
               onChange={handleChange}
               type="number"
-              min="1"
+              step="any"
+              min="0"
               required
               className="form-control"
             />

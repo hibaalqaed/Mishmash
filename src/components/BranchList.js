@@ -20,7 +20,7 @@ const BranchList = () => {
   return (
     <div className="container">
       <SearchBar setQuery={setQuery} />
-      <Title>Bakeries</Title>
+      <Title>Branches</Title>
       {branchlist}
     </div>
   );

@@ -1,18 +1,18 @@
 import { useState, React } from "react";
 import { AuthButtonStyled } from "../../styles";
-import Signup from "../modals/SignupModal";
+import Signin from "../modals/SigninModal";
 
-const SignupButton = () => {
+const SigninButton = () => {
   const [isOpen, setIsOpen] = useState(false);
   const closeModal = () => setIsOpen(false);
   const openModal = () => setIsOpen(true);
 
   return (
     <>
-      <AuthButtonStyled onClick={openModal}>Sign Up</AuthButtonStyled>
-      <Signup isOpen={isOpen} closeModal={closeModal} />
+      <AuthButtonStyled onClick={openModal}>Sign In</AuthButtonStyled>
+      <Signin isOpen={isOpen} closeModal={closeModal} />
     </>
   );
 };
 
-export default SignupButton;
+export default SigninButton;

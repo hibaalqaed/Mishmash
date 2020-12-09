@@ -12,11 +12,12 @@ import { observer } from "mobx-react";
 // Store
 import branchStore from "../stores/branchStore";
 import productStore from "../stores/productStore";
+import authStore from "../stores/authStore";
 
 const BranchDetail = () => {
   const { branchSlug } = useParams(); // const productId = useParams().productId;
   const branch = branchStore.branches.find(
-    (_branch) => _branch.Slug === branchSlug
+    (_branch) => _branch.slug === branchSlug
   );
 
   if (!branch) return <Redirect to="/branches" />;
@@ -31,8 +32,10 @@ const BranchDetail = () => {
         <h4>{branch.name}</h4>
         <img src={branch.image} alt={branch.name} />
       </DetailWrapper>
-      <ProductList products={products} />
-      <AddButton branch={branch} />
+      <div>
+        <ProductList products={products} />
+        {authStore.user && <AddButton branch={branch} />}
+      </div>
     </>
   );
 };

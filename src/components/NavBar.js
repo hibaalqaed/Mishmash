@@ -1,6 +1,10 @@
 import logo from "../images/mishmash-logo.jpg";
-import { Logo, NavProduct, ThemeButton } from "../styles";
+import { Logo, NavProduct, ThemeButton, UsernameStyled } from "../styles";
 import SignupButton from "./buttons/SignupButton";
+import SigninButton from "./buttons/SigninButton";
+import authStore from "../stores/authStore";
+import { observer } from "mobx-react";
+import { RiLogoutCircleRLine } from "react-icons/ri";
 
 const NavBar = ({ toggleCurrentTheme, currentTheme }) => {
   return (
@@ -20,7 +24,23 @@ const NavBar = ({ toggleCurrentTheme, currentTheme }) => {
             </NavProduct>
           </li>
           <li className="nav-item">
-            <SignupButton />
+            {authStore.user ? (
+              <>
+                <UsernameStyled>
+                  Hello, {authStore.user.username}
+                </UsernameStyled>
+                <RiLogoutCircleRLine
+                  onClick={authStore.signout}
+                  size="2em"
+                  color="red"
+                />
+              </>
+            ) : (
+              <>
+                <SigninButton />
+                <SignupButton />
+              </>
+            )}
             <ThemeButton onClick={toggleCurrentTheme}>
               {currentTheme === "light" ? "Dark" : "Light"} Mode
             </ThemeButton>
@@ -31,4 +51,4 @@ const NavBar = ({ toggleCurrentTheme, currentTheme }) => {
   );
 };
 
-export default NavBar;
+export default observer(NavBar);

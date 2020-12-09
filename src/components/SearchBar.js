@@ -4,7 +4,7 @@ import { SearchBarStyled } from "../styles";
 const SearchBar = ({ setQuery }) => {
   return (
     <SearchBarStyled
-      placeholder="Search for a product name..."
+      placeholder="Search for a name..."
       onChange={(event) => setQuery(event.target.value)}
     />
   );
