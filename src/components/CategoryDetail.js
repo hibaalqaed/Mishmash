@@ -10,34 +10,34 @@ import ProductList from "./ProductList";
 // Mobx
 import { observer } from "mobx-react";
 // Store
-import branchStore from "../stores/branchStore";
+import categoryStore from "../stores/categoryStore";
 import productStore from "../stores/productStore";
 import authStore from "../stores/authStore";
 
-const BranchDetail = () => {
-  const { branchSlug } = useParams(); // const productId = useParams().productId;
-  const branch = branchStore.branches.find(
-    (_branch) => _branch.slug === branchSlug
+const CategoryDetail = () => {
+  const { categorySlug } = useParams(); // const productId = useParams().productId;
+  const category = categoryStore.categories.find(
+    (_category) => _category.slug === categorySlug
   );
 
-  if (!branch) return <Redirect to="/branches" />;
+  if (!category) return <Redirect to="/categories" />;
 
-  const products = branch.products.map((product) =>
+  const products = category.products.map((product) =>
     productStore.getProductById(product.id)
   );
 
   return (
     <>
       <DetailWrapper>
-        <h4>{branch.name}</h4>
-        <img src={branch.image} alt={branch.name} />
+        <h4>{category.name}</h4>
+        <img src={category.image} alt={category.name} />
       </DetailWrapper>
       <div>
         <ProductList products={products} />
-        {authStore.user && <AddButton branch={branch} />}
+        {authStore.user && <AddButton category={category} />}
       </div>
     </>
   );
 };
 
-export default observer(BranchDetail);
+export default observer(CategoryDetail);

@@ -130,7 +130,7 @@ export const ProductWrapper = styled.div`
   }
 `;
 
-export const BranchItemImage = styled.img`
+export const CategoryItemImage = styled.img`
   width: 20em;
 `;
 

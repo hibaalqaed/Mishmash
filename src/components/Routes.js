@@ -6,21 +6,22 @@ import { observer } from "mobx-react";
 import Home from "./Home";
 import ProductList from "./ProductList";
 import ProductDetail from "./ProductDetail";
-import BranchDetail from "./BranchDetail";
-import BranchList from "./BranchList";
+import CategoryDetail from "./CategoryDetail";
+import CategoryList from "./CategoryList";
 import productStore from "../stores/productStore";
 
 const Routes = () => {
   return (
+    // switch is there so that only one route displays at a time
     <Switch>
-      <Route path="/branches/:branchSlug">
-        <BranchDetail />
+      <Route path="/categories/:categorySlug">
+        <CategoryDetail />
       </Route>
       <Route path="/products/:productId">
         <ProductDetail />
       </Route>
-      <Route path="/branches">
-        <BranchList />
+      <Route path="/categories">
+        <CategoryList />
       </Route>
       <Route path="/products">
         <ProductList products={productStore.products} />

@@ -23,18 +23,18 @@ class ProductStore {
     }
   };
 
-  createProduct = async (newProduct, branch) => {
+  createProduct = async (newProduct, category) => {
     try {
       const formData = new FormData();
       //.append to access any field cuz FormData is not a regular object
       for (const key in newProduct) formData.append(key, newProduct[key]);
 
       const res = await instance.post(
-        `/branches/${branch.id}/products`,
+        `/categories/${category.id}/products`,
         formData
       );
       this.products.push(res.data);
-      branch.products.push({ id: res.data.id });
+      category.products.push({ id: res.data.id });
     } catch (error) {
       console.error("ProductStore -> createProduct -> error", error);
     }

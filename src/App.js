@@ -10,7 +10,7 @@ import { ThemeProvider } from "styled-components";
 import NavBar from "./components/NavBar";
 import Routes from "./components/Routes";
 import productStore from "./stores/productStore";
-import branchStore from "./stores/branchStore";
+import categoryStore from "./stores/categoryStore";
 
 const theme = {
   light: {
@@ -39,7 +39,7 @@ function App() {
         currentTheme={currentTheme}
         toggleCurrentTheme={toggleCurrentTheme}
       />
-      {productStore.loading || branchStore.loading ? (
+      {productStore.loading || categoryStore.loading ? (
         <h1>Loading...</h1>
       ) : (
         <Routes />

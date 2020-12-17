@@ -16,8 +16,8 @@ const NavBar = ({ toggleCurrentTheme, currentTheme }) => {
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav ml-auto">
           <li className="nav-item active">
-            <NavProduct to="/branches" style={{ float: "right" }}>
-              Branches
+            <NavProduct to="/categories" style={{ float: "right" }}>
+              Categories
             </NavProduct>
             <NavProduct to="/products" style={{ float: "right" }}>
               Products
