@@ -1,14 +1,14 @@
-// React
-import { useState } from "react";
-// Mobx
-import { observer } from "mobx-react";
+// Components
+import CategoryItem from "./CategoryItem";
+import SearchBar from "./SearchBar";
 // Styles
 import { Title } from "../styles";
 // Store
 import categoryStore from "../stores/categoryStore";
-// Components
-import CategoryItem from "./CategoryItem";
-import SearchBar from "./SearchBar";
+// Mobx
+import { observer } from "mobx-react";
+// React
+import { useState } from "react";
 
 const CategoryList = () => {
   const [query, setQuery] = useState("");

@@ -1,16 +1,14 @@
-// React
-import { useState } from "react";
-import { observer } from "mobx-react";
-
 // Styling
 import { GlobalStyle } from "./styles";
-import { ThemeProvider } from "styled-components";
-
 // Components
 import NavBar from "./components/NavBar";
 import Routes from "./components/Routes";
-import productStore from "./stores/productStore";
+import { ThemeProvider } from "styled-components";
 import categoryStore from "./stores/categoryStore";
+import { observer } from "mobx-react";
+import productStore from "./stores/productStore";
+// React
+import { useState } from "react";
 
 const theme = {
   light: {

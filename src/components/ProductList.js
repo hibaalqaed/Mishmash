@@ -1,13 +1,12 @@
-// React
-import { useState } from "react";
-import { observer } from "mobx-react";
+// Styling
+import { ListWrapper, Title } from "../styles";
 
 // Components
 import ProductItem from "./ProductItem";
 import SearchBar from "./SearchBar";
-
-// Styling
-import { ListWrapper } from "../styles";
+import { observer } from "mobx-react";
+// React
+import { useState } from "react";
 
 const ProductList = ({ products }) => {
   const [query, setQuery] = useState("");
@@ -22,6 +21,7 @@ const ProductList = ({ products }) => {
   return (
     <>
       <SearchBar setQuery={setQuery} />
+      <Title>Products</Title>
       <ListWrapper>{productArray}</ListWrapper>
     </>
   );
